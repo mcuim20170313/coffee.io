@@ -74,7 +74,7 @@ $(document).ready(function () {
             Td = Tr.insertCell(Tr.cells.length);
             Td.innerHTML = list[ii].st;
             Td = Tr.insertCell(Tr.cells.length);
-            Td.innerHTML ="<button type=submit style=background:#148df9; onclick=test(this.parentNode.parentNode.rowIndex) >修改</button>";
+            Td.innerHTML ="<button type=submit style=background:#148df9; onclick=test(this.parentNode.parentNode.rowIndex) >取杯</button>";
             };
         }
 })
