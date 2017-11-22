@@ -11,12 +11,9 @@ $(function () {
     var today = new Date();
     var tomorrow = new Date(24 * 6 * 60 * 1000);
 
-    $('#input2').datepicker({
-        dateFormat: 'yymmdd'
-    });
+    $('#input2').datepicker();
     $('#input1').datepicker({
         //minDate: 0, //從今天後日期才可選
-        dateFormat: 'yymmdd'
         minDate: tomorrow, //從明天日期才可選
         onSelect: function (dat, inst) {
             $('#input2').datepicker('option', 'minDate', dat);
