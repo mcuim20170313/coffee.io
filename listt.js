@@ -1,5 +1,6 @@
 ﻿var a = 0;
 var b = 0;
+
 $(function () {
     //$('#input1').datepicker({
     //    dateFormat: 'yymmdd'
@@ -7,7 +8,7 @@ $(function () {
     //$('#input2').datepicker({
     //    dateFormat: 'yymmdd'
     //});
-
+    $.datepicker.setDefaults({ dateFormat: 'yymmdd' });
     var today = new Date();
     var tomorrow = new Date(24 * 6 * 60 * 1000);
 
