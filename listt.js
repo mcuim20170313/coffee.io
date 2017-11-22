@@ -16,6 +16,7 @@ $(function () {
     });
     $('#input1').datepicker({
         //minDate: 0, //從今天後日期才可選
+        dateFormat: 'yymmdd'
         minDate: tomorrow, //從明天日期才可選
         onSelect: function (dat, inst) {
             $('#input2').datepicker('option', 'minDate', dat);
