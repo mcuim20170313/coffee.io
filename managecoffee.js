@@ -1,4 +1,7 @@
-﻿$(document).ready(function () {
+﻿var lists = [];
+var list = [];
+
+$(document).ready(function () {
     const config = {
         apiKey: "AIzaSyCJm2bz1AvJNnYaLn5qz0J0PsLBQObbQbQ",
         authDomain: "test-bfe7d.firebaseapp.com",
@@ -16,7 +19,6 @@
 
     dbRefObjecta.once('value', function (snapshot) {
         var data = snapshot.val();
-        var list = [];
         for (var key in data) {
             if (data.hasOwnProperty(key)) {
                 cla = data[key].cla ? data[key].cla : '';
@@ -38,6 +40,25 @@
         }
         refreshUI(list);
     });
+
+    const dbRefObjectc = firebase.database().ref().child("AppCoffee/");
+
+    dbRefObjectc.once('value', function (snapshot) {
+        var data = snapshot.val();
+        for (var key in data) {
+            if (data.hasOwnProperty(key)) {
+                coffee = data[key].coffee ? data[key].coffee : '';
+                if (coffee.trim().length > 0) {
+                    lists.push({
+                        coffeee: coffee,
+                        key: key
+                    })
+
+                }
+            }
+        }
+    });
+
 
     function refreshUI(list) {
     
@@ -104,12 +125,46 @@ function change(aa, bb) {
 
 function del(aa) {
     var keyy = document.getElementById("mytable").rows[aa].cells[0].innerHTML;
+    var tpyy = document.getElementById("inpcof" + aa).value;
     var postRef = firebase.database().ref('/Coffee/' + keyy);
+    var abcc=0;
+    
     if (confirm("確定要刪除嗎?")) {
+        refreshUIII(list,lists)
         postRef.remove().then(function () {
             console.log("成功刪除")
         })
         window.location.reload();
+    }
+
+    function refreshUIII(list) {
+        var cocoo = 0;
+        for (var ii = 0; ii < list.length; ii++) {
+            if (list[ii].coffeee == tpyy) {
+                cocoo++;
+                
+            }
+        }
+        alert(cocoo);
+               
+                if (cocoo == 1) {
+                    for (var iii = 0; iii < lists.length; iii++)
+                    {
+                        alert(lists.length);
+                        alert(lists[iii].coffeee);
+                        alert(tpyy);
+                        if (lists[iii].coffeee == tpyy)
+                        {
+                            alert("A");
+                            abcc = iii + 1;
+                        }
+                    }
+
+                alert(abcc);
+
+            var postRefff = firebase.database().ref('/AppCoffee/' + abcc);
+            postRefff.remove();
+        }
     }
 }
 function add()
@@ -147,6 +202,13 @@ function save(aa)
         var count = snapshot.child('/' + noo + '/').val();
         if (count == null) {
             test();
+            apptest();
+            if (alert("新增成功")) {
+                window.location.reload();
+            }
+            else {
+                window.location.reload();
+            }
         }
         else{
             alert("已經有此咖啡編號了喔!");
@@ -173,10 +235,30 @@ function test() {
             console.log("新增Post成功");
         })
     })
-    if (alert("新增成功")) {
-        window.location.reload();
-    }
-    else {
-        window.location.reload();
+    
+}
+
+function apptest() {
+    refreshUII(lists);
+
+    function refreshUII(list) {
+        var poss = document.getElementById("poss").value;
+        var coco = 0;
+        for (var ii = 0; ii < list.length; ii++) {
+            if (list[ii].coffeee == poss) {
+                coco++;
+            }
+          
+        }
+        if (coco == 0) {
+            var postRef = firebase.database().ref('/AppCoffee/' + (list.length + 1) + '/');
+            postRef.once("value").then(function (snapshot) {
+                postRef.set({
+                    coffee: poss
+                }).then(function () {
+                    console.log("新增Post成功");
+                })
+            })
+        }
     }
 }

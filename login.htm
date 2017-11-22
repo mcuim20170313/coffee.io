@@ -7,8 +7,8 @@
     <style>
         input[type="submit"]{
             background: -webkit-linear-gradient(#55acee, #148df9 50%, #55acee);
-            background: linear-gradient(#55acee, #148df9 50%, #55acee);
-            border: 1px solid #0b5394;
+            background: linear-gradient(#ffb580, #ff6a00 50%, #ffb580);
+            border: 1px solid #ffb580;
             border-radius: 1000px;
             padding: 7px 30px;
             color: #ffffff;
@@ -26,22 +26,23 @@
 
         body{
 
-            background-image: url(image/bg.jpg);
+            background-image: url(image/bg.png);
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
         }
     </style>
 </head>
-<body align="center">
+<body align="center" style="margin:0px">
+    <div style=" width:100%; height:250px; background-image:url(image/001.png); background-size:cover; background-position:center; z-index:2;"></div>
     <pre id="object"></pre>
     <script type="text/javascript" src="login.js"></script>
     <img src="image/loginn.png" style="width:400px; height:150px;" />
   <!--  <font size="20" color="#ffffff"><b>員工登入</b></font>-->
-    <hr />
+    <br /><br />
     <div>
-        <font size="16"><b>員工編號</b></font><br /><br />
-        <input id="postTitle" style="height:30px; width:250px" type="text" placeholder="輸入編號" /><br /><br />
+        <!--<font size="16"><b>員工編號</b></font><br /><br />-->
+        <input id="postTitle" style="height:30px; width:450px" type="text" placeholder="輸入編號" /><br /><br />
         <input id="searchUserInfoBtn" style="height:50px; width:110px" type="submit" onclick="search()" value="登入" />
     </div>
     <img src="image/bg100.png" style="width:150px; height:250px; position:fixed; left:80px ;bottom:0px;" />
