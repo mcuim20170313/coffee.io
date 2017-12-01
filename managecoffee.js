@@ -145,22 +145,22 @@ function del(aa) {
                 
             }
         }
-        alert(cocoo);
+      //  alert(cocoo);
                
                 if (cocoo == 1) {
                     for (var iii = 0; iii < lists.length; iii++)
                     {
-                        alert(lists.length);
-                        alert(lists[iii].coffeee);
-                        alert(tpyy);
+                     //   alert(lists.length);
+                     //   alert(lists[iii].coffeee);
+                     //   alert(tpyy);
                         if (lists[iii].coffeee == tpyy)
                         {
-                            alert("A");
+                           // alert("A");
                             abcc = iii + 1;
                         }
                     }
 
-                alert(abcc);
+             //   alert(abcc);
 
             var postRefff = firebase.database().ref('/AppCoffee/' + abcc);
             postRefff.remove();
